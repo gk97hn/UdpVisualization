@@ -26,14 +26,14 @@ Rectangle {
     }
 
     onShapesChanged: {
-        // Clear existing shapes
+
         for (var i = shapeContainer.children.length - 1; i >= 0; i--) {
             if (shapeContainer.children[i] !== fileSelector) {
                 shapeContainer.children[i].destroy();
             }
         }
 
-        // Create new shapes
+
         for (var j = 0; j < shapes.length; j++) {
             var shape = shapes[j];
             var component;

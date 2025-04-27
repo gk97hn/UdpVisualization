@@ -10,7 +10,13 @@ Logger& Logger::instance()
 
 Logger::Logger()
 {
-    QString logPath = QDir::currentPath() + "/application.log";
+    QString logPath;
+       #ifdef Q_OS_LINUX
+       logPath = "/var/log/UdpVisualization.log";
+       #else
+       logPath = QDir::currentPath() + "/app.log";
+       #endif
+
     m_logFile.setFileName(logPath);
     
     if (!m_logFile.open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text)) {
